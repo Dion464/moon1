@@ -15,4 +15,7 @@ body {
     rgb(var(--background-start-rgb)),
     rgb(var(--background-end-rgb))
   );
+  min-height: 100vh;
 }
+
+/* Add any custom styles below this line */

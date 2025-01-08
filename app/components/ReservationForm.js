@@ -13,129 +13,144 @@ export default function ReservationForm() {
     message: "",
   });
 
+  const [status, setStatus] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData);
-    // Add your form submission logic here
+    setStatus("sending");
+
+    try {
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          date: "",
+          time: "",
+          guests: "2",
+          message: "",
+        });
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      setStatus("error");
+    }
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="w-full max-w-md mx-auto"
-    >
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="max-w-xl mx-auto p-6 backdrop-blur-lg bg-white/5 border border-[#D4AF37]/20">
+      <h2 className="text-3xl font-light text-white mb-6">
+        Make a Reservation
+      </h2>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium mb-1">Name</label>
             <input
               type="text"
+              placeholder="Name"
               required
-              className="w-full px-3 py-2 border rounded-md"
               value={formData.name}
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
               }
+              className="w-full bg-white/10 border border-[#D4AF37]/20 text-white px-4 py-2 focus:outline-none focus:border-[#D4AF37]"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Email</label>
-            <input
-              type="email"
-              required
-              className="w-full px-3 py-2 border rounded-md"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-            />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium mb-1">Phone</label>
             <input
               type="tel"
+              placeholder="Phone"
               required
-              className="w-full px-3 py-2 border rounded-md"
               value={formData.phone}
               onChange={(e) =>
                 setFormData({ ...formData, phone: e.target.value })
               }
+              className="w-full bg-white/10 border border-[#D4AF37]/20 text-white px-4 py-2 focus:outline-none focus:border-[#D4AF37]"
             />
-          </div>
-          <div>
-            <label className="block text-sm font-medium mb-1">Guests</label>
-            <select
-              className="w-full px-3 py-2 border rounded-md"
-              value={formData.guests}
-              onChange={(e) =>
-                setFormData({ ...formData, guests: e.target.value })
-              }
-            >
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-                <option key={num} value={num}>
-                  {num} {num === 1 ? "person" : "people"}
-                </option>
-              ))}
-            </select>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium mb-1">Date</label>
             <input
               type="date"
               required
-              className="w-full px-3 py-2 border rounded-md"
               value={formData.date}
               onChange={(e) =>
                 setFormData({ ...formData, date: e.target.value })
               }
+              className="w-full bg-white/10 border border-[#D4AF37]/20 text-white px-4 py-2 focus:outline-none focus:border-[#D4AF37]"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Time</label>
             <input
               type="time"
               required
-              className="w-full px-3 py-2 border rounded-md"
               value={formData.time}
               onChange={(e) =>
                 setFormData({ ...formData, time: e.target.value })
               }
+              className="w-full bg-white/10 border border-[#D4AF37]/20 text-white px-4 py-2 focus:outline-none focus:border-[#D4AF37]"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1">
-            Special Requests
-          </label>
+          <select
+            value={formData.guests}
+            onChange={(e) =>
+              setFormData({ ...formData, guests: e.target.value })
+            }
+            className="w-full bg-white/10 border border-[#D4AF37]/20 text-white px-4 py-2 focus:outline-none focus:border-[#D4AF37]"
+          >
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+              <option key={num} value={num}>
+                {num} Guests
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
           <textarea
-            className="w-full px-3 py-2 border rounded-md"
-            rows="3"
+            placeholder="Special Requests (Optional)"
             value={formData.message}
             onChange={(e) =>
               setFormData({ ...formData, message: e.target.value })
             }
+            rows="4"
+            className="w-full bg-white/10 border border-[#D4AF37]/20 text-white px-4 py-2 focus:outline-none focus:border-[#D4AF37]"
           ></textarea>
         </div>
 
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="w-full bg-black text-white py-3 rounded-md hover:bg-gray-800 transition"
+        <button
+          className={`w-full py-3 px-6 text-white transition-colors duration-300 ${
+            status === "sending"
+              ? "bg-gray-500"
+              : "bg-[#D4AF37] hover:bg-[#B08D2F]"
+          }`}
           type="submit"
+          disabled={status === "sending"}
         >
-          Make Reservation
-        </motion.button>
+          {status === "sending" ? "Sending..." : "Make Reservation"}
+        </button>
+
+        {status === "success" && (
+          <p className="text-green-400 text-center mt-4">
+            Reservation request sent successfully!
+          </p>
+        )}
       </form>
-    </motion.div>
+    </div>
   );
 }

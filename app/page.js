@@ -33,26 +33,14 @@ export default function Home() {
     <div ref={containerRef} className="min-h-screen bg-[#0A0A0A]">
       <Navbar />
 
-      {/* Modernized Hero Section */}
-      <section className="min-h-screen flex flex-col md:flex-row relative">
-        {/* Animated Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `linear-gradient(30deg, #D4AF37 1px, transparent 1px), 
-                              linear-gradient(-30deg, #D4AF37 1px, transparent 1px)`,
-              backgroundSize: "50px 50px",
-            }}
-          ></div>
-        </div>
-
+      {/* Hero Section */}
+      <section className="min-h-screen flex flex-col lg:flex-row">
         {/* Left Content Panel */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-          className="w-full md:w-1/2 flex items-center relative overflow-hidden backdrop-blur-sm"
+          transition={{ duration: 1 }}
+          className="w-full lg:w-1/2 bg-[#1A1A1A] flex items-center relative overflow-hidden"
         >
           <div className="relative z-10 px-8 md:px-16 py-20 w-full">
             <motion.div
@@ -97,12 +85,12 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Right Image Grid with Glass Effect */}
+        {/* Right Image Grid - Updated for better mobile responsiveness */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="w-full md:w-1/2 grid grid-cols-2 grid-rows-2 gap-0.5 p-0.5 bg-[#D4AF37]/10"
+          className="w-full lg:w-1/2 grid grid-cols-2 grid-rows-2 min-h-[50vh] lg:min-h-screen"
         >
           {[
             "/IMG_2462.jpeg",
@@ -112,25 +100,22 @@ export default function Home() {
           ].map((img, index) => (
             <motion.div
               key={index}
-              className="relative overflow-hidden"
-              whileHover={{ scale: 1.02, zIndex: 10 }}
-              transition={{ duration: 0.4 }}
+              className="relative h-[25vh] lg:h-auto overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
             >
               <Image
                 src={img}
-                alt="Featured Dish"
+                alt={`Featured Dish ${index + 1}`}
                 fill
                 className="object-cover"
+                sizes="(max-width: 768px) 50vw, 25vw"
+                priority={index === 0}
               />
               <motion.div
-                className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70 opacity-0 
-                         hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
+                className="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300"
                 whileHover={{ opacity: 1 }}
-              >
-                <span className="text-white text-lg font-light tracking-wider">
-                  Discover More
-                </span>
-              </motion.div>
+              />
             </motion.div>
           ))}
         </motion.div>

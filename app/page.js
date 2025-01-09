@@ -69,7 +69,7 @@ export default function Home() {
                 </motion.span>
               </h1>
               <p className="text-xl md:text-2xl mb-12 text-gray-300 font-light tracking-wide">
-                A futuristic dining experience
+                Një përvojë unike kulinare
               </p>
               <motion.a
                 href="#reservations"
@@ -79,7 +79,7 @@ export default function Home() {
                          px-10 py-4 text-lg tracking-wider hover:text-black transition-all duration-300
                          backdrop-blur-md"
               >
-                RESERVE A TABLE
+                REZERVO NJË TAVOLINË
               </motion.a>
             </motion.div>
           </div>
@@ -134,18 +134,18 @@ export default function Home() {
             {[
               {
                 icon: "✧",
-                title: "Culinary Innovation",
-                desc: "Experience avant-garde gastronomy",
+                title: "Inovacion Kulinari",
+                desc: "Përjetoni gastronominë moderne",
               },
               {
                 icon: "✦",
-                title: "Ambient Design",
-                desc: "Immersive atmospheric dining",
+                title: "Dizajn Ambiental",
+                desc: "Ambient i veçantë për darkë",
               },
               {
                 icon: "❖",
-                title: "Mixology",
-                desc: "Crafted with precision",
+                title: "Mixologji",
+                desc: "Përgatitur me precizion",
               },
             ].map((item, index) => (
               <motion.div
@@ -199,10 +199,10 @@ export default function Home() {
               className="h-[1px] bg-[#D4AF37] mx-auto mb-8"
             />
             <h2 className="text-5xl md:text-6xl font-extralight text-white mb-6 tracking-wider">
-              Culinary Journey
+              Udhëtim Kulinari
             </h2>
             <p className="text-gray-400 text-lg tracking-wide">
-              Experience our signature dishes
+              Përjetoni gatimet tona të veçanta
             </p>
           </motion.div>
 
@@ -210,18 +210,18 @@ export default function Home() {
             {[
               {
                 img: "/IMG_2464.jpeg",
-                title: "Main Course",
-                desc: "Contemporary cuisine",
+                title: "Pjatat Kryesore",
+                desc: "Kuzhinë bashkëkohore",
               },
               {
                 img: "/IMG_2465.jpeg",
-                title: "Breakfast",
-                desc: "Morning delights",
+                title: "Mëngjesi",
+                desc: "Kënaqësi mëngjesore",
               },
               {
                 img: "/IMG_2467.jpeg",
-                title: "Bar Selection",
-                desc: "Crafted beverages",
+                title: "Përzgjedhje nga Bari",
+                desc: "Pije të përzgjedhura",
               },
             ].map((item, index) => (
               <motion.div
@@ -277,12 +277,11 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
               >
                 <h2 className="text-5xl font-extralight text-white mb-8 tracking-wider">
-                  Reserve Your{" "}
-                  <span className="text-[#D4AF37]">Experience</span>
+                  Rezervo <span className="text-[#D4AF37]">Përvojën Tënde</span>
                 </h2>
                 <div className="w-24 h-[1px] bg-[#D4AF37] mb-8" />
                 <p className="text-gray-400 text-lg mb-12">
-                  Join us for an unforgettable dining experience
+                  Bashkohuni me ne për një përvojë të paharrueshme
                 </p>
                 <div className="space-y-6 text-gray-300">
                   <div className="flex items-center space-x-4">
@@ -329,7 +328,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
               >
                 <h2 className="text-5xl font-extralight text-white mb-8 tracking-wider">
-                  Find Us
+                  Na Gjeni
                 </h2>
                 <div className="w-24 h-[1px] bg-[#D4AF37] mb-12" />
                 <div className="space-y-8">
@@ -408,17 +407,22 @@ export default function Home() {
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8 }}
-              className="relative h-[600px] backdrop-blur-lg bg-white/5 border border-[#D4AF37]/20"
+              className="relative h-[600px] rounded-2xl overflow-hidden backdrop-blur-lg bg-white/5 border border-[#D4AF37]/20"
             >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.1234567890123!2d21.123456!3d42.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDA3JzM0LjQiRSA0MsKwMDcnMzQuNCJO!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+              <div className="absolute inset-0 p-[1px] rounded-2xl bg-gradient-to-br from-[#D4AF37]/50 via-[#D4AF37]/10 to-transparent">
+                <div className="absolute inset-[2px] rounded-2xl overflow-hidden">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.3776121494396!2d21.156215115517583!3d42.65126007916792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13549f8a6a4b35d3%3A0x8ab885f455be589!2sMOON%20Kitchen%20Bar!5e0!3m2!1sen!2s!4v1666666666666!5m2!1sen!2s"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                  ></iframe>
+                </div>
+              </div>
             </motion.div>
           </div>
         </motion.div>
@@ -438,15 +442,15 @@ export default function Home() {
               <h3 className="text-2xl font-light text-white mb-6">
                 Moon Kitchen & Bar
               </h3>
-              <p className="text-gray-400">A futuristic dining experience</p>
+              <p className="text-gray-400">Një përvojë unike kulinare</p>
             </div>
             <div>
-              <h3 className="text-2xl font-light text-white mb-6">Contact</h3>
-              <p className="text-gray-400">Phone: 045 501 205</p>
+              <h3 className="text-2xl font-light text-white mb-6">Kontakti</h3>
+              <p className="text-gray-400">Telefoni: 045 501 205</p>
               <p className="text-gray-400">Email: info@moonkitchen.com</p>
             </div>
             <div>
-              <h3 className="text-2xl font-light text-white mb-6">Follow Us</h3>
+              <h3 className="text-2xl font-light text-white mb-6">Na Ndiqni</h3>
               <div className="flex gap-6">
                 <motion.a
                   whileHover={{ scale: 1.1, color: "#D4AF37" }}

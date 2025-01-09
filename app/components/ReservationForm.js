@@ -50,14 +50,14 @@ export default function ReservationForm() {
   return (
     <div className="max-w-xl mx-auto p-6 backdrop-blur-lg bg-white/5 border border-[#D4AF37]/20">
       <h2 className="text-3xl font-light text-white mb-6">
-        Make a Reservation
+        Bëni një Rezervim
       </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <input
               type="text"
-              placeholder="Name"
+              placeholder="Emri juaj"
               required
               value={formData.name}
               onChange={(e) =>
@@ -69,7 +69,7 @@ export default function ReservationForm() {
           <div>
             <input
               type="tel"
-              placeholder="Phone"
+              placeholder="Numri i telefonit"
               required
               value={formData.phone}
               onChange={(e) =>
@@ -142,7 +142,7 @@ export default function ReservationForm() {
           type="submit"
           disabled={status === "sending"}
         >
-          {status === "sending" ? "Sending..." : "Make Reservation"}
+          {status === "sending" ? "Sending..." : "Rezervo Tani"}
         </button>
 
         {status === "success" && (

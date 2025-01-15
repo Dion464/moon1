@@ -12,7 +12,8 @@ export default function Menu() {
       subCategories: [
         {
           title: "Mishrat e Zgjedhura",
-          description: "Përzgjedhje e mishrave premium të pjekura në mënyrë perfekte",
+          description:
+            "Përzgjedhje e mishrave premium të pjekura në mënyrë perfekte",
         },
         {
           title: "Hamburgerat Artizanalë",
@@ -21,8 +22,8 @@ export default function Menu() {
         {
           title: "Specialitetet e Detit",
           description: "Pjata deti të freskëta të stinës",
-        }
-      ]
+        },
+      ],
     },
     {
       title: "Mëngjesi & Brunch",
@@ -40,8 +41,8 @@ export default function Menu() {
         {
           title: "Të Shëndetshme",
           description: "Opsione të lehta dhe të shëndetshme",
-        }
-      ]
+        },
+      ],
     },
     {
       title: "Sallata & Antipasta",
@@ -54,29 +55,33 @@ export default function Menu() {
         },
         {
           title: "Antipasta Speciale",
-          description: "Seleksionim i kujdesshëm antipastash tradicionale dhe moderne",
-        }
-      ]
+          description:
+            "Seleksionim i kujdesshëm antipastash tradicionale dhe moderne",
+        },
+      ],
     },
     {
       title: "Bari & Pijet",
-      image: "/IMG_2467.jpeg",
+      image: "/bar.jpg",
       description: "Eksperiencë unike në çdo gotë",
       subCategories: [
         {
           title: "Koktejlet Signature",
           description: "Krijime unike nga mikserët tanë të talentuar",
+          image: "/makingcoctail.jpg",
         },
         {
           title: "Koleksioni i Verërave",
           description: "Përzgjedhje ekskluzive nga vreshtat më të mira",
+          image: "/wine.jpg",
         },
         {
           title: "Pijet Freskuese",
           description: "Limonada artizanale dhe pije të ftohta të stinës",
-        }
-      ]
-    }
+          image: "/drink.jpg",
+        },
+      ],
+    },
   ];
 
   return (
@@ -155,6 +160,16 @@ export default function Menu() {
                                hover:border-[#D4AF37]/40 transition-all duration-300
                                group/item"
                     >
+                      {subCat.image && (
+                        <div className="relative h-48 mb-6 rounded-lg overflow-hidden">
+                          <Image
+                            src={subCat.image}
+                            alt={subCat.title}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      )}
                       <h3 className="text-2xl font-light text-white mb-4 group-hover/item:text-[#D4AF37] transition-colors">
                         {subCat.title}
                       </h3>
@@ -176,9 +191,11 @@ export default function Menu() {
             className="text-center mt-32 mb-16"
           >
             <p className="text-gray-400 text-lg font-light italic">
-              Të gjitha pjatat tona përgatiten me përbërës të freskët dhe sezonalë.
+              Të gjitha pjatat tona përgatiten me përbërës të freskët dhe
+              sezonalë.
               <br />
-              Për informacione rreth alergjive, ju lutem konsultohuni me stafin tonë.
+              Për informacione rreth alergjive, ju lutem konsultohuni me stafin
+              tonë.
             </p>
           </motion.div>
         </motion.div>
